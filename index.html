@@ -1,0 +1,41 @@
+<html>
+  ​ ​
+  <body>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <form>
+      <button type="button" onclick="payWithPaystack()">Pay</button>
+    </form>
+
+    <script>
+      function payWithPaystack() {
+        var handler = PaystackPop.setup({
+          key: "pk_test_552e8f5d719afed693015eb1dc8e8b509c7a17a4",
+          email: "mubarak.aminu@scelloo.com",
+          amount: 10000,
+          currency: "NGN",
+          channels: ["card"],
+          metadata: {
+            custom_field: {
+              type: "charge",
+              accountId: "9484494",
+              accountName: "Scello ltd",
+            },
+            app: "optima",
+            type: "add_card",
+            orgId: "5fa7462c-01f4-4a24-ae24-a89551931a33",
+          },
+
+          callback: function (response) {
+            console;
+            alert("success. transaction ref is " + response.reference);
+          },
+          onClose: function () {
+            alert("window closed");
+          },
+        });
+        handler.openIframe();
+      }
+    </script>
+    ​
+  </body>
+</html>
